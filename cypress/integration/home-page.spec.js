@@ -67,6 +67,7 @@ describe("Home Page ", () => {
         );
      });
    });
+   
    describe("By movie genre" ,() => {
     it("should display movies with the specified genre only", () => {
         const selectedGenreId = 35;
@@ -84,4 +85,26 @@ describe("Home Page ", () => {
       });
     });
   });
+
+  describe("By movie title and genre", ()=>{
+    it("should only display movies with m in the title and the specified genre", ()=>{
+        let searchString="m";
+        let matchingMovies=filterByTitle(movies,searchString);
+
+        const selectedGenreId=35;
+        const selectedGenreText="Comedy";
+        matchingMovies=filterByGenre(matchingMovies,selectedGenreId);
+
+        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
+        cy.get("#genre-select").click();
+        cy.get("li").contains(selectedGenreText).click(); //Choose comedy genre
+        cy.get(".MuiCardHeader-content").should(
+          "have.length",
+          matchingMovies.length
+        );
+        cy.get(".MuiCardHeader-content").each(($card, index) => {
+          cy.wrap($card).find("p").contains(matchingMovies[index].title);
+        });
+    });
+   });
 });
