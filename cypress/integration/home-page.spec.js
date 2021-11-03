@@ -84,27 +84,44 @@ describe("Home Page ", () => {
         });
       });
     });
+
+    describe("By movie title and genre", ()=>{
+      it("should only display movies with m in the title and the specified genre", ()=>{
+          let searchString="m";
+          let matchingMovies=filterByTitle(movies,searchString);
+  
+          const selectedGenreId=35;
+          const selectedGenreText="Comedy";
+          matchingMovies=filterByGenre(matchingMovies,selectedGenreId);
+  
+          cy.get("#filled-search").clear().type(searchString); // Enter m in text box
+          cy.get("#genre-select").click();
+          cy.get("li").contains(selectedGenreText).click(); //Choose comedy genre
+          cy.get(".MuiCardHeader-content").should(
+            "have.length",
+            matchingMovies.length
+          );
+          cy.get(".MuiCardHeader-content").each(($card, index) => {
+            cy.wrap($card).find("p").contains(matchingMovies[index].title);
+          });
+      });
+     });
   });
 
-  describe("By movie title and genre", ()=>{
-    it("should only display movies with m in the title and the specified genre", ()=>{
-        let searchString="m";
-        let matchingMovies=filterByTitle(movies,searchString);
 
-        const selectedGenreId=35;
-        const selectedGenreText="Comedy";
-        matchingMovies=filterByGenre(matchingMovies,selectedGenreId);
 
-        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-        cy.get("#genre-select").click();
-        cy.get("li").contains(selectedGenreText).click(); //Choose comedy genre
-        cy.get(".MuiCardHeader-content").should(
-          "have.length",
-          matchingMovies.length
-        );
-        cy.get(".MuiCardHeader-content").each(($card, index) => {
-          cy.wrap($card).find("p").contains(matchingMovies[index].title);
-        });
+  describe("Selecting favorite movies", ()=>{
+    it("should display an avatar at the top of the movie card and be added to the Favourite movies page",()=>{
+      cy.get("button[aria-label='add to favorites']").eq(0).click();
+      cy.get("button[aria-label='add to favorites']").eq(1).click();
+      const favorites=[movies[0],movies[1]];
+      cy.get(".MuiCardHeader-avatar").should("have.length",favorites.length);
+
+      cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+      cy.get(".MuiCardHeader-content").should("have.length",favorites.length);
+      cy.get(".MuiCardHeader-content").each(($card, index) => {
+        cy.wrap($card).find("p").contains(favorites[index].title);
+      });
     });
-   });
+  });
 });
