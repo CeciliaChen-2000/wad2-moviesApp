@@ -85,5 +85,18 @@ describe("Navigation", () => {
       cy.url().should("include", `/movies/${movies[0].id}`);
       cy.get("h3").contains(movies[0].title);
     });
+    it("should navigate backward and forward between the Favourite movies page and the movie details page", ()=>{
+      cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+      cy.get("h3").contains("Favourite Movies");
+      cy.url().should("not.include", `/movies/${movies[0].id}`);
+
+      cy.get("button[aria-label='go back'").click();
+      cy.url().should("include", `/movies/${movies[0].id}`);
+      cy.get("h3").contains(movies[0].title);
+
+      cy.get("button[aria-label='go forward'").click();
+      cy.get("h3").contains("Favourite Movies");
+      cy.url().should("not.include", `/movies/${movies[0].id}`);
+    });
   });
 });
