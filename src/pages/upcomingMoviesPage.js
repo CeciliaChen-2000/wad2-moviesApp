@@ -1,6 +1,6 @@
 import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import { getUpcomingMovies } from "../api/tmdb-api";
