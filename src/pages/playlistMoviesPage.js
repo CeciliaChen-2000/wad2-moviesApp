@@ -25,7 +25,10 @@ const PlaylistMoviesPage = () => {
   if (isLoading) {
     return <Spinner />;
   }
-  const movies = playlistMovieQueries.map((q) => q.data);
+  const movies = playlistMovieQueries.map((q) => {
+    q.data.genre_ids = q.data.genres.map(g => g.id)
+    return q.data
+  });
   const toDo = () => true;
 
   return (
