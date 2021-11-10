@@ -10,10 +10,10 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+// import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
@@ -36,10 +36,10 @@ export default function MovieCard({ movie, action }) {
   } else {
     movie.favorite = false
   }
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  };
+  // const handleAddToFavorite = (e) => {
+  //   e.preventDefault();
+  //   addToFavorites(movie);
+  // };
 
   //Add to playlist status check and event
   if(playlist.find((id) => id === movie.id)) {
@@ -47,10 +47,10 @@ export default function MovieCard({ movie, action }) {
   }else{
     movie.isInPlaylist = false;
   }
-  const handleAddToPlaylist = (e) => {
-    e.preventDefault();
-    addToPlaylist(movie);
-  };
+  // const handleAddToPlaylist = (e) => {
+  //   e.preventDefault();
+  //   addToPlaylist(movie);
+  // };
 
   return (
     <Card className={classes.card}>
