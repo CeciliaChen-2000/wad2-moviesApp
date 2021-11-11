@@ -34,6 +34,8 @@ bundle_app:
   stage: build
   script:
     - npm run build
+  artifacts:
+    - build/
 
 build_jobX:
   stage: build
