@@ -1,4 +1,6 @@
 import React, { useState} from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -76,6 +78,13 @@ const MovieDetails = ({movie}) => {
                     </li>
                 ))}
             </Paper>
+
+            <Link to={`/movies/${movie.id}/recommendations`}>
+                <Button variant="outlined" size="medium" color="primary">
+                    Recommendations
+                </Button>
+            </Link>
+
             <Fab
                 color="secondary"
                 variant="extended"

@@ -14,6 +14,7 @@ import UpcomingMoviesPage from "./pages/upcomingMoviesPage"
 import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage"
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
 import PopularMoviesPage from "./pages/popularMoviesPage"
+import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
 import PlaylistMoviesPage from "./pages/playlistMoviesPage"
 import MoviesContextProvider from "./contexts/moviesContext";
 
@@ -37,13 +38,17 @@ const App = () => {
           {" "}
           <Switch>
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+            <Route path="/reviews/:id" component={MovieReviewPage} />
+
             <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
             <Route exact path="/movies/nowPlaying" component={NowPlayingMoviesPage} />
             <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
             <Route exact path="/movies/popular" component={PopularMoviesPage} />
-            <Route path="/reviews/:id" component={MovieReviewPage} />
+
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
             <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
+            
+            <Route path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
             <Route path="/movies/:id" component={MoviePage} />
             <Route exact path="/" component={HomePage} />
             <Redirect from="*" to="/" />
