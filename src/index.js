@@ -16,7 +16,15 @@ import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
 import PopularMoviesPage from "./pages/popularMoviesPage"
 import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
 import PlaylistMoviesPage from "./pages/playlistMoviesPage"
+
+import LoginPage from "./pages/loginPage"
+import SignupPage from "./pages/signupPage"
+
 import MoviesContextProvider from "./contexts/moviesContext";
+
+import { FirebaseAppProvider } from 'reactfire';
+import { useFirebaseApp } from 'reactfire';
+import firebaseConfig from "./firebaseAuth/firebaseConfig";
 
 //declare the query client
 const queryClient = new QueryClient({
@@ -30,6 +38,8 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+  const firebase = useFirebaseApp();
+  console.log(firebase);
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -47,9 +57,12 @@ const App = () => {
 
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
             <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
-            
+
             <Route path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
             <Route path="/movies/:id" component={MoviePage} />
+
+            <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignupPage} />
             <Route exact path="/" component={HomePage} />
             <Redirect from="*" to="/" />
           </Switch>
@@ -60,4 +73,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<FirebaseAppProvider firebaseConfig={firebaseConfig}><App /></FirebaseAppProvider>, document.getElementById("root"));

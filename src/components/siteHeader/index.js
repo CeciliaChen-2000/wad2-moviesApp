@@ -27,6 +27,10 @@ const SiteHeader = ( { history }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  const buttonOptions = [
+    { label: "Log in", path: "/login" },
+    { label: "Sign up", path: "/signup" }
+  ];
   const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Top rated", path: "/movies/topRated" },
@@ -52,9 +56,60 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
-          <Typography variant="h6" className={classes.title}>
-            All you ever wanted to know about Movies!
-          </Typography>
+          {isMobile ? (
+              <>
+                <IconButton
+                  aria-label="menu"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={open}
+                  onClose={() => setAnchorEl(null)}
+                >
+                  {buttonOptions.map((opt) => (
+                    <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </>
+            ) : (
+              <>
+                {buttonOptions.map((opt) => (
+                  <Button
+                    key={opt.label}
+                    color="inherit"
+                    onClick={() => handleMenuSelect(opt.path)}
+                  >
+                    {opt.label}
+                  </Button>
+                ))}
+              </>
+            )}
+
+
+
+
+
             {isMobile ? (
               <>
                 <IconButton

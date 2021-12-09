@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
-import { useQuery } from 'react-query'
-import Spinner from '../components/spinner'
+// import { useQuery } from 'react-query'
+// import Spinner from '../components/spinner'
 import { getRecommendationsMovies } from "../api/tmdb-api";
 
 const RecommendationsMoviesPage = (props) => {
