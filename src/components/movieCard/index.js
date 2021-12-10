@@ -10,7 +10,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-// import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
 // import IconButton from "@material-ui/core/IconButton";
@@ -24,6 +23,11 @@ const useStyles = makeStyles({
   avatar: {
     backgroundColor: "rgb(255, 0, 0)",
   },
+  tip:{
+    color:"rgb(200,30,30)",
+    fontSize:18,
+    marginBottom:-40
+  }
 });
 
 export default function MovieCard({ movie, action }) {
@@ -91,6 +95,9 @@ export default function MovieCard({ movie, action }) {
               {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
+            <Typography variant="h6" component="p" className={classes.tip}>
+              {movie.isInPlaylist ? <>Successfully added in playlist!</> : <></>}
+            </Typography>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>

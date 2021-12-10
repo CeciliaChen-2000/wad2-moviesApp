@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../../contexts/dataContext";
 import IconButton from "@material-ui/core/IconButton";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const AddToPlaylistIcon = ({ movie }) => {
   const context = useContext(DataContext);
@@ -11,9 +12,11 @@ const AddToPlaylistIcon = ({ movie }) => {
     context.addToPlaylist(movie);
   };
   return (
-    <IconButton aria-label="add to playlist" onClick={handleAddToPlaylist}>
-      <PlaylistAddIcon color="primary" fontSize="large" />
-    </IconButton>
+    <Tooltip title="Add to playlist">
+      <IconButton aria-label="add to playlist" onClick={handleAddToPlaylist}>
+        <PlaylistAddIcon color="primary" fontSize="large" />
+      </IconButton>
+    </Tooltip>
   );
 };
 

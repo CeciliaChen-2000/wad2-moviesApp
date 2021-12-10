@@ -1,6 +1,7 @@
 import React from "react";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 import { Link } from "react-router-dom";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const WriteReviewIcon = ({ movie }) => {
   return (
@@ -12,7 +13,9 @@ const WriteReviewIcon = ({ movie }) => {
         },
       }}
     >
-      <RateReviewIcon color="primary" fontSize="large" />
+      <Tooltip title="Add review">
+        <RateReviewIcon color="primary" fontSize="large" />
+      </Tooltip>
     </Link>
   );
 };
