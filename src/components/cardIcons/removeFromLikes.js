@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { ActorsContext } from "../../contexts/actorsContext";
+import { dataContext } from "../../contexts/dataContext";
 
 const RemoveFromLikesIcon = ({ actor }) => {
-  const context = useContext(ActorsContext);
+  const context = useContext(dataContext);
 
   const handleRemoveFromLikes = (e) => {
     e.preventDefault();

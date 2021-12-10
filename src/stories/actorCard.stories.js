@@ -2,7 +2,7 @@ import React from "react";
 import ActorCard from "../components/actorCard";
 import SampleActor from "./sampleActorData"; //Sample data about an actor
 import { MemoryRouter } from "react-router";
-import ActorsContextProvider from "../contexts/actorsContext";
+import DataContextProvider from "../contexts/dataContext";
 import AddToLikesIcon from "../components/cardIcons/addToLikes";
 
 export default {
@@ -10,7 +10,7 @@ export default {
   component: ActorCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
-    (Story) => <ActorsContextProvider>{Story()}</ActorsContextProvider>,
+    (Story) => <DataContextProvider>{Story()}</DataContextProvider>,
   ],
 };
 

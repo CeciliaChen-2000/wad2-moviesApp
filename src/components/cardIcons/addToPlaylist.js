@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { MoviesContext } from "../../contexts/moviesContext";
+import { DataContext } from "../../contexts/dataContext";
 import IconButton from "@material-ui/core/IconButton";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const AddToPlaylistIcon = ({ movie }) => {
-  const context = useContext(MoviesContext);
+  const context = useContext(DataContext);
 
   const handleAddToPlaylist = (e) => {
     e.preventDefault();

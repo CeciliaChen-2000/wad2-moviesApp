@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { ActorsContext } from "../../contexts/actorsContext";
+import { DataContext } from "../../contexts/dataContext";
 import IconButton from "@material-ui/core/IconButton";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 const AddToLikesIcon = ({ actor }) => {
-    const context = useContext(ActorsContext);
+    const context = useContext(DataContext);
   
     const handleAddToLikes = (e) => {
       e.preventDefault();

@@ -4,14 +4,14 @@ import SampleActor from "./sampleActorData";
 import { MemoryRouter } from "react-router";
 import AddToLikesIcon from "../components/cardIcons/addToLikes";
 import Grid from "@material-ui/core/Grid";
-import ActorsContextProvider from "../contexts/actorsContext";
+import DataContextProvider from "../contexts/dataContext";
 
 export default {
   title: "Home Page/ActorList",
   component: ActorList,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
-    (Story) => <ActorsContextProvider>{Story()}</ActorsContextProvider>,
+    (Story) => <DataContextProvider>{Story()}</DataContextProvider>,
   ],
 };
 

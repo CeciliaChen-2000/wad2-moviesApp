@@ -4,8 +4,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
@@ -33,26 +31,30 @@ const useStyles = makeStyles((theme) => ({
 export default function FilterAndSortActorsCard(props) {
     const classes = useStyles();
 
-    // const handleTextChange = (e, props) => {
-    //     handleChange(e, "name", e.target.value);
-    // };
+    const handleChange = (e, type, value) => {
+        e.preventDefault();
+        props.onUserInput(type, value); // NEW
+    };
+    const handleTextChange = (e, props) => {
+        handleChange(e, "name", e.target.value);
+    };
 
     return (
         <Card className={classes.root} variant="outlined">
             <CardContent>
-                <Typography variant="h5" component="h1" color="white">
+                <Typography variant="h5" component="h1">
                     Search an actor or sort them!
                 </Typography>
-                {/* <TextField
+                <TextField
                     className={classes.formControl}
                     id="filled-search"
-                    label="Search field"
+                    label="Search actors"
                     type="search"
                     value={props.titleFilter}
-                    variant="filled"
+                    variant="standard"
                     onChange={handleTextChange}
-                /> */}
-                <TextField
+                />
+                {/* <TextField
                     className={classes.formControl}
                     id="filled-search"
                     label="Search actors"
@@ -66,7 +68,7 @@ export default function FilterAndSortActorsCard(props) {
                         ),
                     }}
                     variant="standard"
-                />
+                /> */}
                 <FormGroup className={classes.formControl}>
                     <FormControlLabel control={<Switch defaultChecked />} label="Sorted by popularity" />
                 </FormGroup>

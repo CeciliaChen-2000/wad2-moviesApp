@@ -17,10 +17,11 @@ import PopularMoviesPage from "./pages/popularMoviesPage"
 import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
 import PlaylistMoviesPage from "./pages/playlistMoviesPage"
 
+import ActorsPage from "./pages/actorsPage"
 import LoginPage from "./pages/loginPage"
 import SignupPage from "./pages/signupPage"
 
-import MoviesContextProvider from "./contexts/moviesContext";
+import DataContextProvider from "./contexts/dataContext";
 
 import { FirebaseAppProvider } from 'reactfire';
 import { useFirebaseApp } from 'reactfire';
@@ -44,7 +45,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
-        <MoviesContextProvider>
+        <DataContextProvider>
           {" "}
           <Switch>
             <Route exact path="/reviews/form" component={AddMovieReviewPage} />
@@ -61,12 +62,13 @@ const App = () => {
             <Route path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
             <Route path="/movies/:id" component={MoviePage} />
 
+            <Route path="/actors" component={ActorsPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
             <Route exact path="/" component={HomePage} />
             <Redirect from="*" to="/" />
           </Switch>
-        </MoviesContextProvider>
+        </DataContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

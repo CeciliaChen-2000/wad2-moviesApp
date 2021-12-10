@@ -16,7 +16,7 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 // import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
-import { MoviesContext } from "../../contexts/moviesContext";
+import { DataContext } from "../../contexts/dataContext";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -28,8 +28,8 @@ const useStyles = makeStyles({
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  const { favorites } = useContext(MoviesContext);
-  const { playlist  } = useContext(MoviesContext);
+  const { favorites } = useContext(DataContext);
+  const { playlist  } = useContext(DataContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;

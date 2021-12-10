@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 import img from '../../images/actor-profile-placeholder.png'
-import { ActorsContext } from "../../contexts/actorsContext";
+import { DataContext } from "../../contexts/dataContext";
 
 const useStyles = makeStyles({
     card: { maxWidth: 345 },
@@ -25,8 +25,7 @@ const useStyles = makeStyles({
   
 export default function ActorCard({actor,action}) {
     const classes = useStyles();
-    const { likes } = useContext(ActorsContext);
-
+    const {likes}  = useContext(DataContext);
     if (likes.find((id) => id === actor.id)) {
         actor.like = true;
     } else {
@@ -61,9 +60,9 @@ export default function ActorCard({actor,action}) {
             />
 
             <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                {/* <Typography variant="body2" color="text.secondary">
                     Birthday: {actor.birthday}
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="text.secondary">
                     Popularity: {actor.popularity}
                 </Typography>

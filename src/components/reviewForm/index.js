@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import useForm from "react-hook-form";
-import { MoviesContext } from "../../contexts/moviesContext";
+import { DataContext } from "../../contexts/dataContext";
 import { withRouter } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import Snackbar from "@material-ui/core/Snackbar"; 
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 const ReviewForm = ({ movie, history }) => {
   const classes = useStyles();
   const { register, handleSubmit, errors, reset } = useForm();
-  const context = useContext(MoviesContext);
+  const context = useContext(DataContext);
   const [rating, setRating] = useState(3);
   const [open, setOpen] = React.useState(false);  //NEW
 
