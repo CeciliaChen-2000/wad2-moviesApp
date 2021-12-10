@@ -18,7 +18,6 @@ const DataContextProvider = (props) => {
     }
     setLikes(newLikes)
   };
-  
   //Remove an actor from the Likes list
   const removeFromLikes = (actor) => {
     setLikes( likes.filter(

@@ -63,7 +63,7 @@ export default function ActorCard({actor,action}) {
                 {/* <Typography variant="body2" color="text.secondary">
                     Birthday: {actor.birthday}
                 </Typography> */}
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2">
                     Popularity: {actor.popularity}
                 </Typography>
             </CardContent>

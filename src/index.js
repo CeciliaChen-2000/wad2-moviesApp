@@ -16,7 +16,9 @@ import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
 import PopularMoviesPage from "./pages/popularMoviesPage"
 import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
 import PlaylistMoviesPage from "./pages/playlistMoviesPage"
+import LikesActorsPage from "./pages/likesActorsPage"
 
+import ActorPage from "./pages/actorDetailsPage"
 import ActorsPage from "./pages/actorsPage"
 import LoginPage from "./pages/loginPage"
 import SignupPage from "./pages/signupPage"
@@ -26,6 +28,7 @@ import DataContextProvider from "./contexts/dataContext";
 import { FirebaseAppProvider } from 'reactfire';
 import { useFirebaseApp } from 'reactfire';
 import firebaseConfig from "./firebaseAuth/firebaseConfig";
+
 
 //declare the query client
 const queryClient = new QueryClient({
@@ -58,13 +61,15 @@ const App = () => {
 
             <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
             <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
+            <Route exact path="/actors/likes" component={LikesActorsPage} />
 
-            <Route path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
-            <Route path="/movies/:id" component={MoviePage} />
+            <Route exact path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
+            <Route exact path="/movies/:id" component={MoviePage} />
 
-            <Route path="/actors" component={ActorsPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignupPage} />
+            <Route exact path="/actors/:id" component={ActorPage} />
+            <Route exact path="/actors" component={ActorsPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/" component={HomePage} />
             <Redirect from="*" to="/" />
           </Switch>

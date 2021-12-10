@@ -28,11 +28,13 @@ const SiteHeader = ( { history }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const buttonOptions = [
-    { label: "Log in", path: "/login" },
-    { label: "Sign up", path: "/signup" },
-    { label: "Actors", path: "/actors"}
+    
   ];
   const menuOptions = [
+    { label: "Log in", path: "/login" },
+    { label: "Sign up", path: "/signup" },
+    { label: "Actors", path: "/actors"},
+    { label: "Liked Actors", path: "/actors/likes"},
     { label: "Home", path: "/" },
     { label: "Top rated", path: "/movies/topRated" },
     { label: "Popular", path: "/movies/popular" },

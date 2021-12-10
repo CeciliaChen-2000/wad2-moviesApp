@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../headerMovieList";
+import Header from "../headerList";
 import FilterAndSortCard from "../filterAndSortActorsCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,10 +26,9 @@ function ActorListPageTemplate({ actors, title, action }) {
         return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
       }).sort((a, b) => { return a.popularity - b.popularity });
 
-
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
-    if (type === "popularity") setSwitchOn(!switchOn);
+    else setSwitchOn(!switchOn);
   };
 
   return (
