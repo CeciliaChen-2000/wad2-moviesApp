@@ -95,7 +95,7 @@ export default function MovieCard({ movie, action }) {
               {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
-            <Typography variant="h6" component="p" className={classes.tip}>
+            <Typography variant="h6" component="p" className={classes.tip} aria-label='message'>
               {movie.isInPlaylist ? <>Successfully added in playlist!</> : <></>}
             </Typography>
         </Grid>
