@@ -17,9 +17,6 @@ function AuthPageTemplate({title, action}){
             <Grid item xs={12}>
                 <Header title={title} />
             </Grid>
-            <Grid item container spacing={5}>
-                {action}
-            </Grid>
         </Grid>
     );
 }

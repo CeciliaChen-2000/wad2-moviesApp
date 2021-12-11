@@ -25,10 +25,6 @@ import SignupPage from "./pages/signupPage"
 
 import DataContextProvider from "./contexts/dataContext";
 
-import { FirebaseAppProvider } from 'reactfire';
-import { useFirebaseApp } from 'reactfire';
-import firebaseConfig from "./firebaseAuth/firebaseConfig";
-
 
 //declare the query client
 const queryClient = new QueryClient({
@@ -42,12 +38,10 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const firebase = useFirebaseApp();
-  console.log(firebase);
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <SiteHeader />
+        <SiteHeader/>
         <DataContextProvider>
           {" "}
           <Switch>
@@ -80,4 +74,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<FirebaseAppProvider firebaseConfig={firebaseConfig}><App /></FirebaseAppProvider>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

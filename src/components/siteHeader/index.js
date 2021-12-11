@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,6 +13,7 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { auth } from "../../firebaseAuth/firebaseConfig";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -20,19 +22,14 @@ const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
-const SiteHeader = ( { history }) => {
+const SiteHeader = ( { history },{currentUser}) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const buttonOptions = [
-    
-  ];
   const menuOptions = [
-    { label: "Log in", path: "/login" },
-    { label: "Sign up", path: "/signup" },
     { label: "Actors", path: "/actors"},
     { label: "Liked Actors", path: "/actors/likes"},
     { label: "Home", path: "/" },
@@ -59,60 +56,15 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
-          {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {buttonOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <>
-                {buttonOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
-                ))}
-              </>
-            )}
-
-
-
-
-
+          <Link to={`/signup`}><Button>SIGN UP</Button></Link>
+          {currentUser === undefined ?
+            <><Link to={`/login`}><Button>LOG IN</Button></Link>
+              <Link to={`/login`}><Button onClick={() => auth.signOut()}>LOG OUT</Button></Link>
+            </>
+            :
+            <Button onClick={() => auth.signOut()}>LOG OUT</Button>
+          }
+          {/* whether to LOG IN or LOG OUT */}
             {isMobile ? (
               <>
                 <IconButton

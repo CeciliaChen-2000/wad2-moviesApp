@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useFirebaseApp } from 'reactfire';
-import 'firebase/auth';
 import PageTemplate from "../components/templateAuthPage"
+import { auth } from '../firebaseAuth/firebaseConfig';
 
 const SignupPage = () => {
   // User State
@@ -21,15 +20,11 @@ const SignupPage = () => {
     })
   };
 
-  // Import firebase
-  const firebase = useFirebaseApp();
-
   // Submit function (Create account)
   const handleSubmit = async (e) => {
-    console.log(firebase);
     e.preventDefault();
     // Sign up code here.
-    await firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+    await auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(result => {
         // Update the nickname
         result.user.updateProfile({
@@ -55,7 +50,7 @@ const SignupPage = () => {
           })
 
         // Sign Out the user.
-        firebase.auth().signOut();
+        auth.signOut();
       }).catch(error => {
         // Update the error
         setUser({

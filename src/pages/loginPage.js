@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { useFirebaseApp } from 'reactfire';
-import 'firebase/auth';
 import PageTemplate from "../components/templateAuthPage"
+
+import { auth } from '../firebaseAuth/firebaseConfig';
+
 
 const LoginPage = () => {
   // User State
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-    error: '',
-  });
+  // const [user, setUser] = useState({
+  //   email: '',
+  //   password: '',
+  //   error: '',
+  // });
+  const [user, setUser] = useState({});
+  const [status, setStatus] = useState("logout");
 
   // onChange function
   const handleChange = e => {
@@ -20,21 +23,25 @@ const LoginPage = () => {
     })
   };
 
-  // Import firebase
-  const firebase = useFirebaseApp();
-
   // Submit function (Log in user)
   const handleSubmit = e => {
     e.preventDefault();
     // Log in code here.
-    firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+    auth.signInWithEmailAndPassword(user.email, user.password)
       .then(result => {
         if (!result.user.emailVerified) {
           setUser({
             ...user,
             error: 'Please verify your email before to continue',
           })
-          firebase.auth().signOut();
+          setStatus("logout");
+          auth.signOut();
+        }else{
+          setUser({
+            ...user,
+            error: 'Success'
+          })
+          setStatus("login");
         }
       })
       .catch(error => {
@@ -48,7 +55,7 @@ const LoginPage = () => {
 
   return (
       <>
-          <PageTemplate title="Log in" />
+          <PageTemplate title="Log in" action={status}/>
           <form onSubmit={handleSubmit}>
               <input type="text" placeholder="Email" name="email" onChange={handleChange} /><br />
               <input type="password" placeholder="Password" name="password" onChange={handleChange} /><br />
