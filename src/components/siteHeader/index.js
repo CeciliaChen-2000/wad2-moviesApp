@@ -40,15 +40,15 @@ const SiteHeader = ( { history },{currentUser}) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const menuOptions = [
-    { label: "Actors", path: "/actors"},
-    { label: "Liked Actors", path: "/actors/likes"},
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Top rated", path: "/movies/topRated" },
     { label: "Popular", path: "/movies/popular" },
     { label: "Now playing", path: "/movies/nowPlaying" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Playlist", path: "/movies/playlist" }
+    { label: "Playlist", path: "/movies/playlist" },
+    { label: "Actors", path: "/actors"},
+    { label: "Liked Actors", path: "/actors/likes"}
   ];
 
   const handleMenuSelect = (pageURL) => {
