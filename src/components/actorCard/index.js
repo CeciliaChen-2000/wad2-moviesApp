@@ -70,7 +70,7 @@ export default function ActorCard({actor,action}) {
 
             <CardActions>
                 {action(actor)}
-                <Link to={`/actors/${actor.id}`}>
+                <Link to={`/actors/${actor.id}`} underline="none">
                     <Button size="small">
                         Learn More
                     </Button>

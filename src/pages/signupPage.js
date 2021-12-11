@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import PageTemplate from "../components/templateAuthPage"
 import { auth } from '../firebaseAuth/firebaseConfig';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  form : {
+    margin:20,
+    padding: 20,
+    width: 300,
+    fontSize:20
+  }
+});
 
 const SignupPage = () => {
+  const classes = useStyles();
   // User State
   const [user, setUser] = useState({
     nickname: '',
@@ -61,17 +72,19 @@ const SignupPage = () => {
   }
 
   return (
-      <>
-          <PageTemplate title="Sign up" />
-          <form onSubmit={handleSubmit}>
-              <input type="text" placeholder="Nickname" name="nickname" onChange={handleChange} /><br />
-              <input type="text" placeholder="Email" name="email" onChange={handleChange} /><br />
-              <input type="password" placeholder="Password" name="password" onChange={handleChange} /><br />
-              <button type="submit">Sign Up</button>
-          </form>
-          {user.error && <h4>{user.error}</h4>}
-      </>
-
+    <>
+      <PageTemplate title="Sign up" />
+      <center>
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="Nickname" name="nickname" onChange={handleChange} className={classes.form} /><br />
+          <input type="text" placeholder="Email" name="email" onChange={handleChange} className={classes.form} /><br />
+          <input type="password" placeholder="Password" name="password" onChange={handleChange} className={classes.form} /><br />
+          <button type="submit" className={classes.form}>Sign Up</button>
+          <button type="reset" className={classes.form}>Reset</button>
+        </form>
+        <p className={classes.form}>{user.error}</p>
+      </center>
+    </>
   )
 };
 

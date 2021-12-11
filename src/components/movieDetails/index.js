@@ -79,7 +79,7 @@ const MovieDetails = ({movie}) => {
                 ))}
             </Paper>
 
-            <Link to={`/movies/${movie.id}/recommendations`}>
+            <Link to={`/movies/${movie.id}/recommendations`} underline="none">
                 <Button variant="outlined" size="medium" color="primary">
                     Recommendations
                 </Button>

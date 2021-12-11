@@ -5,7 +5,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const WriteReviewIcon = ({ movie }) => {
   return (
-    <Link
+    <Link underline="none"
       to={{
         pathname: `/reviews/form`,
         state: {

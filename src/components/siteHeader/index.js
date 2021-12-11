@@ -6,10 +6,20 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+
+// import Box from '@material-ui/core/Box';
+// import Drawer from '@material-ui/core/Drawer';
+// import List from '@material-ui/core/List';
+// import Divider from '@material-ui/core/Divider';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import InboxIcon from '@material-ui/icon/MoveToInbox';
+// import MailIcon from '@material-ui/icon/Mail';
+
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -33,11 +43,11 @@ const SiteHeader = ( { history },{currentUser}) => {
     { label: "Actors", path: "/actors"},
     { label: "Liked Actors", path: "/actors/likes"},
     { label: "Home", path: "/" },
+    { label: "Favorites", path: "/movies/favorites" },
     { label: "Top rated", path: "/movies/topRated" },
     { label: "Popular", path: "/movies/popular" },
     { label: "Now playing", path: "/movies/nowPlaying" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Favorites", path: "/movies/favorites" },
     { label: "Playlist", path: "/movies/playlist" }
   ];
 
@@ -56,10 +66,10 @@ const SiteHeader = ( { history },{currentUser}) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
-          <Link to={`/signup`}><Button>SIGN UP</Button></Link>
+          <Link to={`/signup`} underline="none"><Button>SIGN UP</Button></Link>
           {currentUser === undefined ?
-            <><Link to={`/login`}><Button>LOG IN</Button></Link>
-              <Link to={`/login`}><Button onClick={() => auth.signOut()}>LOG OUT</Button></Link>
+            <><Link to={`/login`} underline="none"><Button>LOG IN</Button></Link>
+              <Link to={`/login`} underline="none"><Button onClick={() => auth.signOut()}>LOG OUT</Button></Link>
             </>
             :
             <Button onClick={() => auth.signOut()}>LOG OUT</Button>
