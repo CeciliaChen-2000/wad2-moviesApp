@@ -75,6 +75,15 @@ export default function ActorCard({actor,action}) {
                         Learn More
                     </Button>
                 </Link>
+                {actor.known_for !== undefined ?
+                    <Link to={`/actors/${actor.id}/movies`} underline="none">
+                        <Button size="small">
+                            Starring Movies
+                        </Button>
+                    </Link> :
+                    <></>
+                }
+                
             </CardActions>
         </Card>
     );

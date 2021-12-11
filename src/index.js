@@ -9,17 +9,22 @@ import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
 // import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
+import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
+
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage"
 import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage"
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
 import PopularMoviesPage from "./pages/popularMoviesPage"
-import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
-import PlaylistMoviesPage from "./pages/playlistMoviesPage"
-import LikesActorsPage from "./pages/likesActorsPage"
 
+import PlaylistMoviesPage from "./pages/playlistMoviesPage"
+
+import MovieCreditsPage from "./pages/movieCreditsPage"
+import LikesActorsPage from "./pages/likesActorsPage"
 import ActorPage from "./pages/actorDetailsPage"
 import ActorsPage from "./pages/actorsPage"
+import ActorStarringMoviesPage from "./pages/actorStarringMoviesPage"
+
 import LoginPage from "./pages/loginPage"
 import SignupPage from "./pages/signupPage"
 
@@ -57,9 +62,11 @@ const App = () => {
             <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
             <Route exact path="/actors/likes" component={LikesActorsPage} />
 
+            <Route exact path="/movies/:id/credits" component={MovieCreditsPage} />
             <Route exact path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
             <Route exact path="/movies/:id" component={MoviePage} />
 
+            <Route exact path="/actors/:id/movies" component={ActorStarringMoviesPage} />
             <Route exact path="/actors/:id" component={ActorPage} />
             <Route exact path="/actors" component={ActorsPage} />
             <Route exact path="/login" component={LoginPage} />

@@ -79,11 +79,20 @@ const MovieDetails = ({movie}) => {
                 ))}
             </Paper>
 
-            <Link to={`/movies/${movie.id}/recommendations`} underline="none">
-                <Button variant="outlined" size="medium" color="primary">
-                    Recommendations
-                </Button>
-            </Link>
+            <Paper component="ul" className={classes.root}>
+                <Link to={`/movies/${movie.id}/recommendations`} underline="none">
+                    <Button variant="outlined" size="medium" color="primary">
+                        Recommendations
+                    </Button>
+                </Link>
+
+                <Link to={`/movies/${movie.id}/credits`} underline="none">
+                    <Button variant="outlined" size="medium" color="primary">
+                        Credits
+                    </Button>
+                </Link>
+            </Paper>
+            
 
             <Fab
                 color="secondary"

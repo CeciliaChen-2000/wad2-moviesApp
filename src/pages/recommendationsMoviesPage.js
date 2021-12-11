@@ -17,6 +17,7 @@ const RecommendationsMoviesPage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const recommendations = data.results;
+  console.log(recommendations);
 
   // const [recommendations,setRecommendations] = useState([]);
   // const {id} = props.match.params;
