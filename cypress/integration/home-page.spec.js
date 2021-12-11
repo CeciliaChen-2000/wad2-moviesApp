@@ -117,7 +117,7 @@ describe("Home Page ", () => {
       const favorites=[movies[0],movies[1]];
       cy.get(".MuiCardHeader-avatar").should("have.length",favorites.length);
 
-      cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+      cy.get("header").find(".MuiToolbar-root").find("button").eq(6).click();
       cy.get(".MuiCardHeader-content").should("have.length",favorites.length);
       cy.get(".MuiCardHeader-content").each(($card, index) => {
         cy.wrap($card).find("p").contains(favorites[index].title);
