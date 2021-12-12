@@ -184,6 +184,7 @@ List the __new routes__ supported by this app and state the associated page.
 + Firebase user authentication   
 
 Source code filename: 
+| package           | files                              | description                                             |
 | ----------------- | ---------------------------------- | ------------------------------------------------------- |  
 | src/firebaseAuth/ | src/firebaseAuth/firebaseConfig.js | define config file and import required firebase modules |
 | src/pages/        | src/pages/loginPage.js             | define login authtication code and login form           |
