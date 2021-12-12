@@ -16,10 +16,8 @@ const ActorStarringMoviesPage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const actors = data.results; //get all actors
-  const actor = actors.filter(a => a.id == todoId)[0]; //get the actor filtered by id
+  const actor = actors.filter(a => a.id === Number(todoId))[0]; //get the actor filtered by id
   const starringMovies = actor.known_for.filter(m => m.title !== undefined); //remove the TV part
-
-  console.log(starringMovies);
   return (
     <PageTemplate
       title={`${actor.name} - Starring Movies`}
