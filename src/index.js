@@ -1,34 +1,34 @@
-import AddMovieReviewPage from './pages/addMovieReviewPage'
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
-import SiteHeader from './components/siteHeader';
-import MovieReviewPage from "./pages/movieReviewPage";
-import React from "react";
+import React,{ lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
-// import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
-import HomePage from "./pages/homePage";
-import MoviePage from "./pages/movieDetailsPage";
-import RecommendationsMoviesPage from "./pages/recommendationsMoviesPage"
-import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
-
-import UpcomingMoviesPage from "./pages/upcomingMoviesPage"
-import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage"
-import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
-import PopularMoviesPage from "./pages/popularMoviesPage"
-
-import PlaylistMoviesPage from "./pages/playlistMoviesPage"
-
-import MovieCreditsPage from "./pages/movieCreditsPage"
-import LikesActorsPage from "./pages/likesActorsPage"
-import ActorPage from "./pages/actorDetailsPage"
-import ActorsPage from "./pages/actorsPage"
-import ActorStarringMoviesPage from "./pages/actorStarringMoviesPage"
+import DataContextProvider from "./contexts/dataContext";
 
 import LoginPage from "./pages/loginPage"
 import SignupPage from "./pages/signupPage"
 
-import DataContextProvider from "./contexts/dataContext";
+const SiteHeader = lazy(() => import("./components/siteHeader"));
+const HomePage = lazy(() => import("./pages/homePage"));
+const MoviePage = lazy(() => import("./pages/movieDetailsPage"));
+const MovieReviewPage = lazy(() => import("./pages/movieReviewPage"));
+const AddMovieReviewPage = lazy(() => import("./pages/addMovieReviewPage"));
+
+const RecommendationsMoviesPage = lazy(() => import("./pages/recommendationsMoviesPage"));
+const UpcomingMoviesPage = lazy(() => import("./pages/upcomingMoviesPage"));
+const NowPlayingMoviesPage = lazy(() => import("./pages/nowPlayingMoviesPage"));
+const TopRatedMoviesPage = lazy(() => import("./pages/topRatedMoviesPage"));
+const PopularMoviesPage = lazy(() => import("./pages/popularMoviesPage"));
+
+const PlaylistMoviesPage = lazy(() => import("./pages/playlistMoviesPage"));
+const FavoriteMoviesPage = lazy(() => import("./pages/favoriteMoviesPage"));
+const LikesActorsPage = lazy(() => import("./pages/likesActorsPage"));
+
+const MovieCreditsPage = lazy(() => import("./pages/movieCreditsPage"));
+const ActorPage = lazy(() => import("./pages/actorDetailsPage"));
+const ActorsPage = lazy(() => import("./pages/actorsPage"));
+const ActorStarringMoviesPage = lazy(() => import("./pages/actorStarringMoviesPage"));
+
 
 
 //declare the query client
@@ -46,34 +46,40 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <SiteHeader/>
+        <Suspense fallback={<h1>Loading header</h1>}>
+          <SiteHeader />
+        </Suspense>
+
         <DataContextProvider>
           {" "}
-          <Switch>
-            <Route exact path="/reviews/form" component={AddMovieReviewPage} />
-            <Route path="/reviews/:id" component={MovieReviewPage} />
+          <Suspense fallback={<h1>Loading page</h1>}>
+            <Switch>
+              <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+              <Route path="/reviews/:id" component={MovieReviewPage} />
 
-            <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-            <Route exact path="/movies/nowPlaying" component={NowPlayingMoviesPage} />
-            <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
-            <Route exact path="/movies/popular" component={PopularMoviesPage} />
+              <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+              <Route exact path="/movies/nowPlaying" component={NowPlayingMoviesPage} />
+              <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
+              <Route exact path="/movies/popular" component={PopularMoviesPage} />
 
-            <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-            <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
-            <Route exact path="/actors/likes" component={LikesActorsPage} />
+              <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+              <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
+              <Route exact path="/actors/likes" component={LikesActorsPage} />
 
-            <Route exact path="/movies/:id/credits" component={MovieCreditsPage} />
-            <Route exact path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
-            <Route exact path="/movies/:id" component={MoviePage} />
+              <Route exact path="/movies/:id/credits" component={MovieCreditsPage} />
+              <Route exact path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
+              <Route exact path="/movies/:id" component={MoviePage} />
 
-            <Route exact path="/actors/:id/movies" component={ActorStarringMoviesPage} />
-            <Route exact path="/actors/:id" component={ActorPage} />
-            <Route exact path="/actors" component={ActorsPage} />
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/signup" component={SignupPage} />
-            <Route exact path="/" component={HomePage} />
-            <Redirect from="*" to="/" />
-          </Switch>
+              <Route exact path="/actors/:id/movies" component={ActorStarringMoviesPage} />
+              <Route exact path="/actors/:id" component={ActorPage} />
+              <Route exact path="/actors" component={ActorsPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/signup" component={SignupPage} />
+              <Route exact path="/" component={HomePage} />
+              <Redirect from="*" to="/" />
+            </Switch>
+          </Suspense>
+
         </DataContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
