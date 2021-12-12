@@ -221,6 +221,7 @@ https://blog.csdn.net/DcTbnk/article/details/107773716
     Log history.   
     Branch-Edit-Merge workflow.   
     Pull requests.   
+    ![ ](./images/pullRequest.png)
 ## Automated Testing.
 
 ### Best test cases.
