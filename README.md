@@ -1,32 +1,53 @@
 # Assignment 1 - ReactJS app.
 
-Name: [your name]
+Name: [Liangyu Chen]
 
 ## Overview.
 
-[A brief statement on the content of this repository.]
+[A Movie Fan Web App based on React JS and data from TMDB.]
 
 ### Features.
-[ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
+[ A bullet-point list of the ADDITIONAL user I added to the Movies Fan app.]
 
-+ Feature 1
-+ Feature 2
-+ Feature 3
-+ etc
-+ etc
++ Feature 1 - Totally 14 endpoints and 9 new endpoints.
++ Feature 2 - Totally 18 views and 11 new views.
++ Feature 3 - Routing including 6 parameterized URLs.
++ Feature 4 - Storybook support.
++ Feature 5 - Dynamic and interactive UI, Material UI.
++ Feature 6 - Web Form.
++ Feature 7 - Extensive data hyperlinking.
++ Feature 8 - Styled Components 3rd party components.
++ Feature 9 - Firebase authentication
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
-
+[ Outline any non-standard setup steps necessary to run app locally after cloning the repo.]
+```
+npm install
+```
 ## API endpoints.
 
-[ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] 
+[ List the TMDB endpoints used, giving the description and pathname for each one.] 
 
-e.g.
-+ Discover list of movies - discover/movie
-+ Movie details - movie/:id
-+ Movie genres = /genre/movie/list
+https://api.themoviedb.org/3/<<>>?api_key=<<api_key>>&language=en-US
+
++ Discover list of movies. - discover/movie
++ Get a list of movies in theatres. - movie/now_playing
++ Get a list of the current popular movies on TMDB. - movie/popular
++ Get the top rated movies on TMDB. - movie/top_rated
++ Get a list of upcoming movies in theatres. - movie/upcoming
+
++ Get the primary information about a movie. - movie/{movie_id}
++ Get the list of official genres for movies. - genre/movie/list
++ Get the images that belong to a movie. - movie/{movie_id}/images
++ Get the user reviews for a movie. - movie/{movie_id}/reviews
++ Get a list of recommended movies for a movie. - movie/{movie_id}/recommendations
+
++ Get the cast and crew for a movie. - movie/{movie_id}/credits
++ Get the list of popular people on TMDB. - person/popular
++ Get the primary person details by id. - person/{person_id}
++ Get the images for a person. - person/{person_id}/images
+
 
 ## App Design.
 
@@ -39,12 +60,23 @@ e.g.
 
 [ Insert screenshots of the __new/modified app pages__ you developed (and modified existing pages), Include an appropriate caption for each one (see example below).
 
-![ ](./images/view.png)
+![ ](./images/movieDetailsView.png)
+>Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews. Clicking "RECOMMENDATIONS" button will display recommendations movies page of this movie. Clicking "CREDITS" will display credits page of this movie.
 
->Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.
-![ ](./images/view.png)
+![ ](./images/recommendationsMoviesView.png)
+>Display the recommendations movies page by clicking "RECOMMENDATIONS" button on movie details page.
 
->Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.
+![ ](./images/addToPlaylistMessage.png)
+>A message will pop up by clicking "add to playlist" icon button.
+
+![ ](./images/creditsView.png)
+>Display the credits page of this movie by clicking "CREDITS" button on movie detalis page.
+
+![ ](./images/creditsCardView.png)
+>An avator will pop up by clicking "add to likes" icon button.
+
+![ ](./images/)
+![ ](./images/)
 ### Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
