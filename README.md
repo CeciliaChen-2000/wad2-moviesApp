@@ -18,6 +18,9 @@ A bullet-point list of the ADDITIONAL user I added to the Movies Fan app.
 + Feature 7 - Extensive data hyperlinking including 6 parameterized URLs.
 + Feature 8 - Styled Components 3rd party components.
 + Feature 9 - Third-party (Firebase) authentication.
++ Feature 10 - Searching movies by actor and searching credits by movie.
++ Feature 11 - Sorting actors according to popularity.
++ Feature 12 - Full Caching support (useQuery used for every accessing).
 
 
 
@@ -28,7 +31,6 @@ Outline any non-standard setup steps necessary to run app locally after cloning 
 
 ```
 npm install
-
 ```
 
 
@@ -42,6 +44,7 @@ Install other supporting libraries mannully.
 ```
 npm install webpack webpack-cli -D
 npm install --save-dev http-server
+npm install --save-dev  source-map-explorer@2.5.0
 ```
 
 ## API endpoints.
@@ -146,6 +149,9 @@ Insert screenshots of the __new/modified app pages__ developed (and modified exi
 
 >If the signup authentication passes, an email attached with link will be received. Open the home page of movie fan app by clicking the link. And at firebase website, you can view all the signed up users for this project.
 ![ ](./images/firbaseUsers.png)
+
+>Full caching support by using useQuery.
+![ ](./images/userQuery.png)
 ### Routing.
 
 List the __new routes__ supported by this app and state the associated page.
@@ -175,46 +181,63 @@ List the __new routes__ supported by this app and state the associated page.
 
 ## Independent learning (If relevant).
 
-+ Firebase user authentication
-Source code filename:
++ Firebase user authentication   
+
+Source code filename:   
 | src/firebaseAuth/ | src/firebaseAuth/firebaseConfig.js | define config file and import required firebase modules |
 | ----------------- | ---------------------------------- | ------------------------------------------------------- |
 | src/pages/        | src/pages/loginPage.js             | define login authtication code and login form           |
-|                   | src/pages/signupPage.js            | define signup authtication code and signip form         |
-Learning material: https://www.bilibili.com/video/BV16E411n7yC?from=search&seid=14948043773547678991&spm_id_from=333.337.0.0   
-Reference: https://hackernoon.com/authentication-in-react-with-firebase-qc3x3vjl
+|                   | src/pages/signupPage.js            | define signup authtication code and signip form         |   
+Learning material: https://www.bilibili.com/video/BV16E411n7yC?from=search&seid=14948043773547678991&spm_id_from=333.337.0.0     
+Reference: https://hackernoon.com/authentication-in-react-with-firebase-qc3x3vjl   
 
-+ Public and private routing using React Hooks
-Learning material:    
-https://blog.csdn.net/weixin_34001430/article/details/93807466    
++ Public and private routing using React Hooks   
+Learning material:      
+https://blog.csdn.net/weixin_34001430/article/details/93807466     
 https://blog.csdn.net/DcTbnk/article/details/107773716     
 
 -------------------------------------------
 # Assignment 1 - Agile Software Practice.
 
++ React SPA construction and configuration  
++ Automated Testing:   
+    Unique SPA features.  
+    Error/Exception testing.  
+    Test case structure (nesting).   
+    >Cypress Custom commands.   
+    ![ ](./images/cypress.png)
+    ![ ](./images/CypressCustomcommands.png)
++ Continuous Integration:    
+    GitLab CI.    
+    ![ ](./images/gitlabCI.png)
+    
+    ![ ](./images/)
+    ![ ](./images/)
+    ![ ](./images/)
+    Pipeline - Install, Build, and Test jobs.   
+    Branching policy.   
++ Bundling/Code splitting:    
+    Webpack (React-scripts)
+    ![ ](./images/analyze.png)
++ Source control:   
+    Log history.   
+    Branch-Edit-Merge workflow.   
+    Pull requests.   
 ## Automated Testing.
 
 ### Best test cases.
 
-[ List the top 4/5 test cases ('it' blocks), in your opinion, from your test suite that best demonstrate your competency in writing Cypress test code. Specify the test file name and the starting line number of the 'it' block, 
-
-e.g.
-+ cypress/integration/mustWatch-movies-page.spec.js - line 24
-+ cypress/integration/actor-bio-page.spec.js - line 32
-+ etc
++ cypress/integration/login-page.spec.js - line 22
++ cypress/integration/signup-page.spec.js - line 13
++ cypress/integration/likes-page.spec.js - line 99
++ cypress/integration/actors-page.spec.js - line 109
++ cypress/integration/playlist-page.spec.js - line 122
 
 ### Cypress Custom commands (if relevant).
-
-[Specify the test file(s) that contain custom Cypress command implementations.]
-
-e.g.
-+ cypress/integration/mustWatch-novies-page.spec.js
-+ cypress/integration/actor-bio-page.spec.js
++ cypress/integration/signup-page.spec.js
++ cypress/integration/login-page.spec.js
 
 ## Code Splitting.
-
-[Show a screenshot of the 'build/static/js' folder of your project]
-
 ![](images/build.png)
 
 ## Independent learning (If relevant).
