@@ -11,7 +11,7 @@ A bullet-point list of the ADDITIONAL user I added to the Movies Fan app.
 
 + Feature 1 - Totally 14 endpoints and 9 new endpoints.
 + Feature 2 - Totally 18 views and 11 new views.
-+ Feature 3 - Routing including 6 parameterized URLs.
++ Feature 3 - Totally 18 Routings including 6 parameterized URLs.
 + Feature 4 - Storybook support.
 + Feature 5 - Dynamic and interactive UI, Material UI.
 + Feature 6 - Web Form.
@@ -61,7 +61,8 @@ https://api.themoviedb.org/3/<<>>?api_key=<<api_key>>&language=en-US
 ## App Design.
 
 ### Component catalogue.
-Insert a screenshot from the Storybook UI that lists all the stories for the app's components, and highlight those relating to __new/modified components__.
+Insert a screenshot from the Storybook UI that lists all the stories for the app's components, and highlight those relating to __new/modified components__.    
+
 ![](./images/storybook.png)
 
 
@@ -91,7 +92,7 @@ Insert screenshots of the __new/modified app pages__ developed (and modified exi
 >Display detailed infromation of this credit by clicking "LEARN MORE" button on the credits page.
 ![ ](./images/creditDetailsView.png)
 
->Filter and sort credits using this card.
+>Filter and sort credits using this card.   
 ![ ](./images/creditsFilterCardView.png)
 ![ ](./images/filteredAndSortedCreditsView.png)
 
@@ -131,23 +132,51 @@ Insert screenshots of the __new/modified app pages__ developed (and modified exi
 
 >A related message will pop up if sign up authtication fails.
 ![ ](./images/signupErrorView.png)
-![ ](./images/)
-![ ](./images/)
-![ ](./images/)
+
+>If the signup authentication passes, an email attached with link will be received. Open the home page of movie fan app by clicking the link. And at firebase website, you can view all the signed up users for this project.
+![ ](/.images/firbaseUsers.png)
 ### Routing.
 
-[ List the __new routes__ supported by your app and state the associated page.]
+List the __new routes__ supported by this app and state the associated page.
 
-+ /blogs - displays all published blogs.
-+ /blogs/:id - displays a particular blog.
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
++ / - displays discover movies.
++ /movies/:id - displays detailed information page of a movie.
++ /movies/:id/credits - display credits of a movie.
++ /movies/:id/recommendations - display a list of recommended movies of a movie.
++ /movies/topRated - display top rated movies list.
++ /movies/popular - display popular movies list.
++ /movies/nowPlaying - display now playing movies list.
++ /movies/upcoming - display upcoming movies list.
++ /movies/favorites - display movies added in the favorites list.
++ /movies/playlist - display movies added in the playlist.
 
-[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
++ /reviews/form - display form to add a new review.
++ /reviews/:id - to get a list of reviews of a movie.
++ /actors - display the actors list page.
++ /actors/:id - display detailed information of an actor.
++ /actors/:id/movies - display starring movies of an actor.
++ /actors/like - (protected) display the liked actors list aftering logging in.
+
++ /login - (require authtication) display log in page.
++ /signup - (require authtication) display sign up page.
+
+
 
 ## Independent learning (If relevant).
 
-[ Itemize the technologies/techniques you researched independently and adopted in your project, i.e. aspects not covered in the lectures/labs. Include the source code filenames that illustrate these (we do not require code excerpts) and provide references to the online resources that helped you (articles/blogs).
++ Firebase user authentication
+Source code filename:
+| src/firebaseAuth/ | src/firebaseAuth/firebaseConfig.js | define config file and import required firebase modules |
+| ----------------- | ---------------------------------- | ------------------------------------------------------- |
+| src/pages/        | src/pages/loginPage.js             | define login authtication code and login form           |
+|                   | src/pages/signupPage.js            | define signup authtication code and signip form         |
+Learning material: https://www.bilibili.com/video/BV16E411n7yC?from=search&seid=14948043773547678991&spm_id_from=333.337.0.0   
+Reference: https://hackernoon.com/authentication-in-react-with-firebase-qc3x3vjl
+
++ Public and private routing using React Hooks
+Learning material:    
+https://blog.csdn.net/weixin_34001430/article/details/93807466    
+https://blog.csdn.net/DcTbnk/article/details/107773716     
 
 -------------------------------------------
 # Assignment 1 - Agile Software Practice.
