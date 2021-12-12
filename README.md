@@ -183,11 +183,12 @@ List the __new routes__ supported by this app and state the associated page.
 
 + Firebase user authentication   
 
-Source code filename:   
+Source code filename: 
+| ----------------- | ---------------------------------- | ------------------------------------------------------- |  
 | src/firebaseAuth/ | src/firebaseAuth/firebaseConfig.js | define config file and import required firebase modules |
-| ----------------- | ---------------------------------- | ------------------------------------------------------- |
 | src/pages/        | src/pages/loginPage.js             | define login authtication code and login form           |
 |                   | src/pages/signupPage.js            | define signup authtication code and signip form         |   
+
 Learning material: https://www.bilibili.com/video/BV16E411n7yC?from=search&seid=14948043773547678991&spm_id_from=333.337.0.0     
 Reference: https://hackernoon.com/authentication-in-react-with-firebase-qc3x3vjl   
 
