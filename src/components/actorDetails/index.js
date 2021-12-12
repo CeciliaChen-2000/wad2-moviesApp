@@ -20,15 +20,15 @@ const ActorDetails = ({actor}) => {
     const classes = useStyles();
     return (
         <>
-            <Typography variant="h4" component="h4" className={classes.title}>
+            <Typography variant="h4" component="h4" className={classes.title} aria-label="introduction">
                 Introduction
             </Typography>
             
-            <Typography variant="h6" component="p" className={classes.content}>
+            <Typography variant="h6" component="p" className={classes.content} aria-label="hometown">
                 Hometown: {actor.place_of_birth}
             </Typography>
 
-            <Typography variant="h6" component="p" className={classes.content}>
+            <Typography variant="h6" component="p" className={classes.content} aria-label="biography">
                 {actor.biography}
             </Typography>
         </>
