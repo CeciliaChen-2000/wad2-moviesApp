@@ -51,6 +51,7 @@ const SignupPage = () => {
             setUser({
               ...user,
               verifyEmail: `Welcome ${user.nickname}. To continue please verify your email.`,
+              error: "Success!"
             })
           })
           .catch(error => {
