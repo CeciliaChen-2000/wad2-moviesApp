@@ -57,5 +57,16 @@ describe("Movie Details Page", () => {
             cy.wrap($img).should('have.attr','src','https://image.tmdb.org/t/p/w500/'+posterLinks[index]);
         });
     });
+
+    it("should display recommended movies page of this movie",()=>{
+      cy.get("Button[aria-label='recommendations']").click();
+      cy.url().should("include", `/${movieId}/recommendations`);
+      cy.get("h3").contains("Recommendations Movies");
+    });
+    it("should display related credits page of this movie",()=>{
+      cy.get("Button[aria-label='credits']").click();
+      cy.url().should("include", `/${movieId}/credits`);
+      cy.get("h3").contains("Related Credits");
+    });
   });
 });
