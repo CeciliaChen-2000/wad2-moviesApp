@@ -212,10 +212,6 @@ https://blog.csdn.net/DcTbnk/article/details/107773716
 + Continuous Integration:    
     GitLab CI.    
     ![ ](./images/gitlabCI.png)
-    
-    ![ ](./images/)
-    ![ ](./images/)
-    ![ ](./images/)
     Pipeline - Install, Build, and Test jobs.   
     Branching policy.   
 + Bundling/Code splitting:    
@@ -243,5 +239,3 @@ https://blog.csdn.net/DcTbnk/article/details/107773716
 ![](images/build.png)
 
 ## Independent learning (If relevant).
-
-[State which aspect of the Outstanding grading spectrum you addresses. Include relevant screenshots and links to services used, e.g. Percy project, Deployed app
