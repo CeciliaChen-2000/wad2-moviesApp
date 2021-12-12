@@ -41,7 +41,7 @@ describe("Playlist Page ", () => {
 
   describe("Filtering", () => {
     describe("By movie title", () => {
-     it("should only display movies with m in the title", () => {
+     it("should only display movies with a in the title", () => {
        let searchString = "a";
        let matchingMovies = filterByTitle(playlist, searchString);
        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
@@ -94,7 +94,7 @@ describe("Playlist Page ", () => {
     });
 
     describe("By movie title and genre", ()=>{
-      it("should only display movies with m in the title and the specified genre", ()=>{
+      it("should only display movies with a in the title and the specified genre", ()=>{
           let searchString="a";
           let matchingMovies=filterByTitle(playlist,searchString);
   
