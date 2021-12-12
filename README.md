@@ -11,27 +11,38 @@ A bullet-point list of the ADDITIONAL user I added to the Movies Fan app.
 
 + Feature 1 - Totally 14 endpoints and 9 new endpoints.
 + Feature 2 - Totally 18 views and 11 new views.
-+ Feature 3 - Totally 18 Routings including 6 parameterized URLs.
++ Feature 3 - Totally 18 Routings with private routing.
 + Feature 4 - Storybook support.
 + Feature 5 - Dynamic and interactive UI, Material UI.
-+ Feature 6 - Web Form.
-+ Feature 7 - Extensive data hyperlinking.
++ Feature 6 - Web Form (reviews, log in, sign up).
++ Feature 7 - Extensive data hyperlinking including 6 parameterized URLs.
 + Feature 8 - Styled Components 3rd party components.
-+ Feature 9 - Firebase authentication
++ Feature 9 - Third-party (Firebase) authentication.
 
 
 
 
 ## Setup requirements.
 
-Outline any non-standard setup steps necessary to run app locally after cloning the repo.
+Outline any non-standard setup steps necessary to run app locally after cloning the repo.   
+
 ```
 npm install
+
 ```
 
 
 
+Install specified version of firebase.
+```
+npm install firebase@7.14.5
+```
 
+Install other supporting libraries mannully.
+```
+npm install webpack webpack-cli -D
+npm install --save-dev http-server
+```
 
 ## API endpoints.
 List the TMDB endpoints used, giving the description and pathname for each one.
@@ -134,7 +145,7 @@ Insert screenshots of the __new/modified app pages__ developed (and modified exi
 ![ ](./images/signupErrorView.png)
 
 >If the signup authentication passes, an email attached with link will be received. Open the home page of movie fan app by clicking the link. And at firebase website, you can view all the signed up users for this project.
-![ ](/.images/firbaseUsers.png)
+![ ](./images/firbaseUsers.png)
 ### Routing.
 
 List the __new routes__ supported by this app and state the associated page.
