@@ -1,13 +1,13 @@
 # Assignment 1 - ReactJS app.
 
-Name: [Liangyu Chen]
+Name: Liangyu Chen
 
 ## Overview.
 
-[A Movie Fan Web App based on React JS and data from TMDB.]
+A Movie Fan Web App based on React JS and data from TMDB.
 
 ### Features.
-[ A bullet-point list of the ADDITIONAL user I added to the Movies Fan app.]
+A bullet-point list of the ADDITIONAL user I added to the Movies Fan app.
 
 + Feature 1 - Totally 14 endpoints and 9 new endpoints.
 + Feature 2 - Totally 18 views and 11 new views.
@@ -19,16 +19,22 @@ Name: [Liangyu Chen]
 + Feature 8 - Styled Components 3rd party components.
 + Feature 9 - Firebase authentication
 
+
+
+
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run app locally after cloning the repo.]
+Outline any non-standard setup steps necessary to run app locally after cloning the repo.
 ```
 npm install
 ```
+
+
+
+
+
 ## API endpoints.
-
-[ List the TMDB endpoints used, giving the description and pathname for each one.] 
-
+List the TMDB endpoints used, giving the description and pathname for each one.
 https://api.themoviedb.org/3/<<>>?api_key=<<api_key>>&language=en-US
 
 + Discover list of movies. - discover/movie
@@ -49,32 +55,83 @@ https://api.themoviedb.org/3/<<>>?api_key=<<api_key>>&language=en-US
 + Get the images for a person. - person/{person_id}/images
 
 
+
+
+
 ## App Design.
 
 ### Component catalogue.
-
-[ Insert a screenshot from the Storybook UI that lists all the stories for the app's components, and highlight those relating to your __new/modified components__ - see the example screenshot below.] .......
-
+Insert a screenshot from the Storybook UI that lists all the stories for the app's components, and highlight those relating to __new/modified components__.
 ![](./images/storybook.png)
+
+
+
 ### UI Design.
 
-[ Insert screenshots of the __new/modified app pages__ you developed (and modified existing pages), Include an appropriate caption for each one (see example below).
+Insert screenshots of the __new/modified app pages__ developed (and modified existing pages), Include an appropriate caption for each one.
 
-![ ](./images/movieDetailsView.png)
+>Top tool bar header to navigate to different pages and log in or out the system. 
+![ ](./images/headerView.png)
+
 >Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews. Clicking "RECOMMENDATIONS" button will display recommendations movies page of this movie. Clicking "CREDITS" will display credits page of this movie.
+![ ](./images/movieDetailsView.png)
 
-![ ](./images/recommendationsMoviesView.png)
 >Display the recommendations movies page by clicking "RECOMMENDATIONS" button on movie details page.
+![ ](./images/recommendationsMoviesView.png)
 
-![ ](./images/addToPlaylistMessage.png)
 >A message will pop up by clicking "add to playlist" icon button.
+![ ](./images/addToPlaylistMessage.png)
 
-![ ](./images/creditsView.png)
 >Display the credits page of this movie by clicking "CREDITS" button on movie detalis page.
+![ ](./images/creditsView.png)
 
-![ ](./images/creditsCardView.png)
 >An avator will pop up by clicking "add to likes" icon button.
+![ ](./images/creditsCardView.png)
 
+>Display detailed infromation of this credit by clicking "LEARN MORE" button on the credits page.
+![ ](./images/creditDetailsView.png)
+
+>Filter and sort credits using this card.
+![ ](./images/creditsFilterCardView.png)
+![ ](./images/filteredAndSortedCreditsView.png)
+
+>Display actors page by clicking "ACTORS" on the navigation bar.
+![ ](./images/actorsView.png)
+
+>Display the starring movies page of this actor by clicking "STARRING MOVIES" button on the actor card.
+![ ](./images/actorCardView.png)
+![ ](./images/starringMoviesViews.png)
+
+>Display the likes actors page by clicking "LIKED ACTORS" button on the navigation bar.
+![ ](./images/addToLikesIconView.png)
+![ ](./images/likesActorsView.png)
+
+>Delete actor from the likes actors page by clicking "DELETE" icon button on actor card.
+![ ](./images/deleteLikesActorIcon.png)
+![ ](./images/afterDeletingLikesView.png)
+
+>Display the top rated movies by clicking "TOP RATED" button on the navigation bar.
+![ ](./images/topRatedMoviesView.png)
+
+>Display the popular movies by clicking "POPULAR" button on the navigation bar.
+![ ](./images/popularMoviesView.png)
+
+>Display the must movies by clicking "PLAYLIST" button on the navigation bar.
+![ ](./images/addToPlaylistView.png)
+![ ](./images/playlistView.png)
+
+>Display the login page by clicking "LOG IN" button on the navigation bar.
+![ ](./images/loginView.png)
+
+>A related message will pop up if log in authtication fails.
+![ ](./images/loginErrorView.png)
+
+>Display the signup page by clicking "SIGN up" button on the navigation bar.
+![ ](./images/signupView.png)
+
+>A related message will pop up if sign up authtication fails.
+![ ](./images/signupErrorView.png)
+![ ](./images/)
 ![ ](./images/)
 ![ ](./images/)
 ### Routing.
