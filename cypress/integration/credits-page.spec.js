@@ -1,5 +1,5 @@
 let actors;    // List of actors from TMDB
-
+let mId = 580489;
 // Utility functions
 const filterByName = (actorList, string) =>
   actorList.filter((m) => m.name.toLowerCase().search(string) !== -1);
@@ -14,31 +14,31 @@ const sortByPopularity = (actorList, isSwitchOn) => {
     return sorted;
 };
 
-describe("Actors Page ", () => {
+describe("Credits Page ", () => {
   before(() => {
     // Get actors from TMDB and store in actors variable.
     cy.request(
-      `https://api.themoviedb.org/3/person/popular?api_key=${Cypress.env("TMDB_KEY")}&language=en-US`
+      `https://api.themoviedb.org/3/movie/${mId}/credits?api_key=${Cypress.env("TMDB_KEY")}&language=en-US`
     )
       .its("body")    // Take the body of HTTP response from TMDB
       .then((response) => {
-        actors = response.results
+        actors = response.cast
       })
   })
   beforeEach(() => {
-    cy.visit("/actors")
+    cy.visit(`/movies/${mId}/credits`)
   });
 
   describe("Base tests", () => {
     it("displays page header", () => {
-      cy.get("h3").contains("Discover Actors");
+      cy.get("h3").contains("Related Credits");
       cy.get("h6").contains("Search an actor or sort them according to popularity!");
     });
   });
 
   describe("Filtering", () => {
-    describe("By actor name", () => {
-     it("should only display actors with m in the name", () => {
+    describe("By credit name", () => {
+     it("should only display credits with m in the name", () => {
        let searchString = "m";
        let matchingActors = filterByName(actors, searchString);
        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
@@ -50,7 +50,7 @@ describe("Actors Page ", () => {
          cy.wrap($card).find("p").contains(matchingActors[index].name);
        });
      })
-     it("should only display actors with o in the name", () => {
+     it("should only display credits with o in the name", () => {
        let searchString = "o";
        let matchingActors = filterByName(actors, searchString);
        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
@@ -62,7 +62,7 @@ describe("Actors Page ", () => {
          cy.wrap($card).find("p").contains(matchingActors[index].name);
        });
      });
-     it("should only display actors with xyz in the name", ()=>{
+     it("should only display credits with xyz in the name", ()=>{
          let searchString="xyz";
          let matchingActors = filterByName(actors, searchString);
          cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
@@ -73,7 +73,7 @@ describe("Actors Page ", () => {
      });
    });
    
-      describe("Sort actor by popularity", () => {
+      describe("Sort credit by popularity", () => {
           it("should display actors with the popularity from low to high", () => {
               cy.get(".MuiSwitch-root").click();
               let isSwitchOn = false; //popularity from low to high
@@ -85,7 +85,7 @@ describe("Actors Page ", () => {
           });
       });
 
-    describe("Filter and sort by actor name and popularity", ()=>{
+    describe("Filter and sort by credit name and popularity", ()=>{
       it("should only display actors with m in the name with the popularity from low to high", ()=>{
           let searchString="m";
           let matchingActors=filterByName(actors,searchString);
@@ -105,8 +105,8 @@ describe("Actors Page ", () => {
 
 
 
-  describe("Selecting like actors", ()=>{
-    it("should display an avatar at the top of the actor card and be added to the like actors page",()=>{
+  describe("Selecting like credits", ()=>{
+    it("should display an avatar at the top of the credit card and be added to the like credits page",()=>{
       cy.get("button[aria-label='add to likes']").eq(0).click();
       cy.get("button[aria-label='add to likes']").eq(1).click();
       const likes=[actors[0],actors[1]];
@@ -120,19 +120,11 @@ describe("Actors Page ", () => {
     });
   });
 
-  describe("Learn more about actor", ()=>{
-    it("should display the actor details page",()=>{
+  describe("Learn more about credit", ()=>{
+    it("should display the credit details page",()=>{
       cy.get("Button[aria-label='LearnMore']").eq(0).click();
       cy.url().should("include", `/actors/${actors[0].id}`);
       cy.get("h3").contains(actors[0].name);
-    });
-  });
-
-  describe("Get starring movies", ()=>{
-    it("should display the starring movies page of this actor",()=>{
-      cy.get("Button[aria-label='StarringMovies']").eq(0).click();
-      cy.url().should("include", `/actors/${actors[0].id}/movies`);
-      cy.get("h3").contains(`${actors[0].name} - Starring Movies`);
     });
   });
 });

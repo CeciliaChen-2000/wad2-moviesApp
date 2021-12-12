@@ -71,13 +71,13 @@ export default function ActorCard({actor,action}) {
             <CardActions>
                 {action(actor)}
                 <Link to={`/actors/${actor.id}`} underline="none">
-                    <Button size="small">
+                    <Button size="small" aria-label="LearnMore">
                         Learn More
                     </Button>
                 </Link>
                 {actor.known_for !== undefined ?
                     <Link to={`/actors/${actor.id}/movies`} underline="none">
-                        <Button size="small">
+                        <Button size="small" aria-label="StarringMovies">
                             Starring Movies
                         </Button>
                     </Link> :

@@ -103,7 +103,7 @@ export default function MovieCard({ movie, action }) {
       <CardActions disableSpacing>
         {action(movie)}
         <Link to={`/movies/${movie.id}`} underline="none">
-          <Button variant="outlined" size="medium" color="primary">
+          <Button variant="outlined" size="medium" color="primary" aria-label="MoreInfo">
             More Info ...
           </Button>
         </Link>
