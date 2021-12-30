@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState , useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -23,8 +22,8 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { auth } from "../../firebaseAuth/firebaseConfig";
-
+// import { auth } from "../../firebaseAuth/firebaseConfig";
+import { AuthContext } from "../../contexts/authContext";
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
@@ -33,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SiteHeader = ( { history },{currentUser}) => {
+  const context = useContext(AuthContext);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -66,15 +66,27 @@ const SiteHeader = ( { history },{currentUser}) => {
           <Typography variant="h4" className={classes.title}>
             TMDB Client
           </Typography>
-          <Link to={`/signup`} underline="none"><Button>SIGN UP</Button></Link>
-          {currentUser === undefined ?
+          {/* {currentUser === undefined ?
             <><Link to={`/login`} underline="none"><Button>LOG IN</Button></Link>
               <Link to={`/login`} underline="none"><Button onClick={() => auth.signOut()}>LOG OUT</Button></Link>
             </>
             :
             <Button onClick={() => auth.signOut()}>LOG OUT</Button>
+          } */}
+          {
+            context.isAuthenticated ? (
+              <p>
+                Welcome, {context.userName}! <Button onClick={() => context.signout()}>SIGN OUT</Button>
+              </p>
+            ) : (
+              <p>
+                You are not logged in!{" "}
+                <Button onClick={() => history.push("/login")}>LOGIN</Button>
+              </p>
+            )
           }
-          {/* whether to LOG IN or LOG OUT */}
+          <Button onClick={() => history.push("/signup")}>SIGN UP</Button>
+          
             {isMobile ? (
               <>
                 <IconButton
