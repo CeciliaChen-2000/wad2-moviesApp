@@ -79,7 +79,7 @@ const App = () => {
 
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/signup" component={SignupPage} />
-                <Route exact path="/" component={HomePage} />
+                <PrivateRoute exact path="/" component={HomePage} />
                 <Redirect from="*" to="/" />
               </Switch>
             </AuthProvider>
