@@ -59,7 +59,7 @@ const App = () => {
                 <Route exact path="/reviews/form" component={AddMovieReviewPage} />
                 <Route path="/reviews/:id" component={MovieReviewPage} />
 
-                <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+                <PrivateRoute exact path="/movies/upcoming" component={UpcomingMoviesPage} />
                 <Route exact path="/movies/nowPlaying" component={NowPlayingMoviesPage} />
                 <Route exact path="/movies/topRated" component={TopRatedMoviesPage} />
                 <Route exact path="/movies/popular" component={PopularMoviesPage} />
@@ -69,8 +69,8 @@ const App = () => {
                 <Route exact path="/actors/likes" component={LikesActorsPage} />
 
                 <Route exact path="/movies/:id/credits" component={MovieCreditsPage} />
-                <Route exact path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
-                <Route exact path="/movies/:id" component={MoviePage} />
+                <PrivateRoute exact path="/movies/:id/recommendations" component={RecommendationsMoviesPage} />
+                <PrivateRoute exact path="/movies/:id" component={MoviePage} />
 
                 <Route exact path="/actors/:id/movies" component={ActorStarringMoviesPage} />
                 <Route exact path="/actors/:id" component={ActorPage} />
